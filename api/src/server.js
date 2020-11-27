@@ -27,7 +27,7 @@ app.use(
 );  
 
 app.get('/test', (req, res) => {
-
+  
   res.status(200).send();
 })
 
@@ -50,6 +50,42 @@ app.get('/story/:uuid', async (req, res) => {
   })
 })
 
+/**     ///////////// GET ALL RECORD /////////////    */
+
+app.get('/storyblock', async (req, res) => {
+  const result = await pg.select(['uuid', 'content', 'story_id', 'created_at']).from('storyblock')
+  res.json({
+      res: result
+  })
+})
+
+/**     ///////////// GET RECORD BY UUID /////////////    */
+
+app.get('/storyblock/:uuid', async (req, res) => {
+
+// GET
+// record
+// met UUID
+
+})
+
+/**     ///////////// ADD RECORD /////////////    */
+
+app.post('/addstoryblock/', async (req, res) => {
+
+// ADD
+// record
+
+})
+
+/**     ///////////// DELETE RECORD /////////////    */
+app.delete('/storyblock/', async (req, res) => {
+
+// Delete
+// record
+// met UUID
+
+})
 
 async function initialiseTables() {
   await pg.schema.hasTable('storyblock').then(async (exists) => {
